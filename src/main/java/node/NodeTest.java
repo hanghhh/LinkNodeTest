@@ -82,4 +82,32 @@ public class NodeTest {
         return curA;
     }
 
+    /**
+     * 删除链表倒数第N个节点
+     * 思路：快慢指针，快指针先走n步，双指针步长为一同时走，快指针到达尾部时慢指针为倒数第n个节点
+     */
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode f = head;
+        ListNode s = head;
+        while (n !=0) {
+            n--;
+            f = f.next;
+        }
+        ListNode sPre = head;
+
+        while (f != null) {
+            sPre = s;
+            f = f.next;
+            s = s.next;
+        }
+        //慢指针没有移动，只有一个头或者两个节点删除倒数第二个
+        if(s == head) {
+            return head.next;
+        }
+        sPre.next = s.next;
+        return head;
+
+    }
+
+
 }

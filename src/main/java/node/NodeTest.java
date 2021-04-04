@@ -22,11 +22,11 @@ public class NodeTest {
         ListNode s = head.next;
         ListNode f = head.next.next;
         while (s != f) {
-            if(s.next == null || f.next.next == null) {
+            if(f.next == null || f.next.next == null) {
                 return null;
             }
             s = s.next;
-            f = f.next;
+            f = f.next.next;
         }
         //跳出循环时指针相遇，快指针回到初始位置。步长调整为1
         f = head;
